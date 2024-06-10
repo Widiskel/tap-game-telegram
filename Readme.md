@@ -2,12 +2,12 @@
 
 feel free to use
 
-https://widiskel.github.io/modules/{file-location-inside-repository}
+https://widiskel.github.io/modules/blob/master/{file-location-inside-repository}
 
 ## Module
 - Telegram : telegram_web_app.js
   Module Usage : you can use this module to open telegram web apps to override default telegram web apps js
-  Use : https://widiskel.github.io/modules/telegram/telegram_web_app.js
+  Use : https://widiskel.github.io/modules/blob/master/telegram/telegram_web_app.js
 
 
 ## Resource Interceptor
