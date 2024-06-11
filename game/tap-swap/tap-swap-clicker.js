@@ -1,5 +1,6 @@
 const energyThreshold = 25;
 let checkAttempts = 0;
+let isLoading;
 
 function generateRandomCoor(radius) {
   let x, y;
@@ -25,28 +26,57 @@ function getTapEnergy() {
 
 function tap() {
   const button = document.querySelector("#ex1-layer img");
+  const loading = document.querySelector("[class*='_loadingContent']");
 
-  if (button) {
+  if (loading) {
     console.log(
-      "%c[Tap-Swap-Clicker] - Coin found. Performing click.",
+      "%c[Tap-Swap-Clicker] - Game is still loading.",
       "background: #8774E1; color: #fff; padding: 5px;"
     );
-    clickButton();
+    isLoading = true;
+    attemp();
   } else {
-    checkAttempts++;
-    if (checkAttempts >= 5) {
+    isLoading = false;
+    if (button) {
+      console.log(
+        "%c[Tap-Swap-Clicker] - Coin found. Performing click.",
+        "background: #8774E1; color: #fff; padding: 5px;"
+      );
+      clickButton();
+    } else {
+      attemp();
+    }
+  }
+}
+
+function attemp() {
+  checkAttempts++;
+  if (checkAttempts >= 10) {
+    if (isLoading) {
+      console.log(
+        `%c[Tap-Swap-Clicker] - Game still loading after 10 attempts. Reloading page.`,
+        "background: #8774E1; color: #fff; padding: 5px;"
+      );
+    } else {
       console.log(
         "%c[Tap-Swap-Clicker] - Coin not found after 5 attempts. Reloading page.",
         "background: #8774E1; color: #fff; padding: 5px;"
       );
-      location.reload();
-    } else {
+    }
+    location.reload();
+  } else {
+    if (isLoading) {
       console.log(
-        `%c[Tap-Swap-Clicker] - Coin not found. Attempt ${checkAttempts}/${5}. Retrying in 3 seconds.`,
+        `%c[Tap-Swap-Clicker] - Waiting for loading ${checkAttempts}/${10} Retrying in 3 seconds`,
         "background: #8774E1; color: #fff; padding: 5px;"
       );
-      setTimeout(tap, 3000);
+    } else {
+      console.log(
+        `%c[Tap-Swap-Clicker] - Coin not found. Attempt ${checkAttempts}/${10}. Retrying in 3 seconds.`,
+        "background: #8774E1; color: #fff; padding: 5px;"
+      );
     }
+    setTimeout(tap, 3000);
   }
 }
 
