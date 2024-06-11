@@ -27,7 +27,6 @@ There several game script available
 
 ## Resource Interceptor
 
-- https://chromewebstore.google.com/detail/resource-override/pkoacgokdfckfpndoffpifphamojphii?hl=en
 - https://chromewebstore.google.com/detail/requestly-intercept-modif/mdnleldcmiljblolnjhpnblkcekpdkpa
 
 ## HOW TO USE RESOURCE INTERCEPTOR ?
